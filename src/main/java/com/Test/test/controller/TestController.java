@@ -5,10 +5,7 @@ import com.Test.test.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -26,12 +23,21 @@ public class TestController {
     }
 
     @PostMapping("/test/write1")
-    public String boardWriteForm(Board board){
+    public String boardWriteForm(Board board, Model model){
         boardService.write(board);
-        return "";
+        model.addAttribute("board", boardService.boardList());
+        return "boardlist";
     }
 
-    //개인학습
+    @GetMapping("/test/view")
+    public String boardView(@RequestParam(name="id") Integer id, Model model){
+        model.addAttribute("board",boardService.boardview(id));
+
+        return "boardview";
+    }
+
+
+    //========== 개인학습 ==========
 
     @GetMapping("/hello")
     public String hello(Model model){

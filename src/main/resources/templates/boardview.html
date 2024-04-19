@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>세부 게시글 보기</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>글번호</th>
+            <th>제목</th>
+            <th>내용</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${board.id}"></td>
+                <td th:text="${board.title}"></td>
+                <td th:text="${board.content}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

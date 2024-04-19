@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BoadList 입니다.</title>
+</head>
+<body>
+        <table>
+            <thead>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board : ${board}">
+                    <td th:text="${board.id}"></td>
+                    <td>
+                        <a th:text="${board.title}" th:href="@{/test/view(id=${board.id})}"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</body>
+</html>
