@@ -10,12 +10,16 @@
             <th>글번호</th>
             <th>제목</th>
             <th>내용</th>
+            <th>삭제하기</th>
         </thead>
         <tbody>
             <tr>
                 <td th:text="${board.id}"></td>
                 <td th:text="${board.title}"></td>
                 <td th:text="${board.content}"></td>
+                <td>
+                    <a th:text="${board.id}" th:href="@{/test/delete(id=${board.id})}"></a>
+                </td>
             </tr>
         </tbody>
     </table>

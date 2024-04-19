@@ -32,8 +32,13 @@ public class TestController {
     @GetMapping("/test/view")
     public String boardView(@RequestParam(name="id") Integer id, Model model){
         model.addAttribute("board",boardService.boardview(id));
-
         return "boardview";
+    }
+
+    @GetMapping("/test/delete")
+    public String boardDelete(@RequestParam(name="id") Integer id, Model model){
+        boardService.delete(id);
+        return "boarddelete";
     }
 
 
