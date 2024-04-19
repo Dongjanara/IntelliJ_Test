@@ -17,17 +17,22 @@ public class TestController {
         this.boardService = boardService;
     }
 
+    //글쓰기
     @GetMapping("/test/write")
     public String boardWriteForm(){
         return "boardwrite";
     }
 
+
     @PostMapping("/test/write1")
     public String boardWriteForm(Board board, Model model){
         boardService.write(board);
+        model.addAttribute("message" , "글 작성이 완료되었습니다");
+        model.addAttribute("searchUrl", "/test/list");
         model.addAttribute("board", boardService.boardList());
         return "boardlist";
     }
+
 
     @GetMapping("/test/view")
     public String boardView(@RequestParam(name="id") Integer id, Model model){
@@ -35,6 +40,7 @@ public class TestController {
         return "boardview";
     }
 
+    //삭제하기
     @GetMapping("/test/delete")
     public String boardDelete(@RequestParam(name="id") Integer id, Model model){
         boardService.delete(id);
