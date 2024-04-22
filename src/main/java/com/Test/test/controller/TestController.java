@@ -48,26 +48,6 @@ public class TestController {
     }
 
 
-    //========== 개인학습 ==========
-
-    @GetMapping("/hello")
-    public String hello(Model model){
-        model.addAttribute("name", "내이름");
-        model.addAttribute("img", "image/hadoop-cycle.png");
-        return "hello";
-    }
-
-    @RestController
-    @RequestMapping("/api")
-    public class ApiController {
-
-        @GetMapping("/name")
-        public String name() {
-            return "내이름";
-        }
-    }
-
-
 
 
 }
