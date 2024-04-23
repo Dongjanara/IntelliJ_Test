@@ -24,6 +24,8 @@
             </tr>
         </tbody>
     </table>
-    <button><a th:href="@{/test/list}">리스트보기</a></button>
+    <form action="/test/list">
+        <input type="submit" value="리스트보기">
+    </form>
 </body>
 </html>
