@@ -5,6 +5,7 @@
     <title>글 쓰기 페이지 입니다!</title>
 </head>
 <body>
+<th:block layout:fragment="content">
     <div>
         <h2> 글쓰기 페이지 입니다. BoardWrite.html 입니다. </h2>
         <form action="/test/write1" method="post">
@@ -21,5 +22,6 @@
             <input type="submit" value="글 작성하기">
         </form>
     </div>
+</th:block>
 </body>
 </html>

@@ -23,16 +23,16 @@ public class TestController {
     //글쓰기
     @GetMapping("/test/write")
     public String boardWriteForm(){
+        System.out.println("Call boardWriteForm");
         return "boardwrite";
     }
-
+    //직접적인 글 쓰는 폼
     @PostMapping("/test/write1")
     public String boardWriteForm(Board board, Model model){
-        boardService.write(board);
+        boardService.write(board); //글써짐
         model.addAttribute("message" , "글 작성이 완료되었습니다");
         model.addAttribute("searchUrl", "/test/list");
-        model.addAttribute("board", boardService.boardList());
-        return "boardlist";
+        return "message";
     }
 
     @GetMapping("/test/list")
@@ -52,7 +52,10 @@ public class TestController {
     @GetMapping("/test/delete")
     public String boardDelete(@RequestParam(name="id") Integer id, Model model){
         boardService.delete(id);
-        return "boarddelete";
+        model.addAttribute("message" , "글 삭제가 완료되었습니다");
+        model.addAttribute("searchUrl", "/test/list");
+        System.out.println("Call boardDelete");
+        return "message";
     }
 
 
