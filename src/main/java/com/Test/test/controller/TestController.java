@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
 public class TestController {
+
     @Autowired
     private final BoardService boardService;
 
@@ -23,7 +26,6 @@ public class TestController {
         return "boardwrite";
     }
 
-
     @PostMapping("/test/write1")
     public String boardWriteForm(Board board, Model model){
         boardService.write(board);
@@ -33,6 +35,12 @@ public class TestController {
         return "boardlist";
     }
 
+    @GetMapping("/test/list")
+    public String boardList(Model model){
+        List<Board> boardList = boardService.boardList();
+        model.addAttribute("board", boardList);
+        return "boardlist";
+    }
 
     @GetMapping("/test/view")
     public String boardView(@RequestParam(name="id") Integer id, Model model){

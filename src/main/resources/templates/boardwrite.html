@@ -6,18 +6,19 @@
 </head>
 <body>
     <div>
+        <h2> 글쓰기 페이지 입니다. BoardWrite.html 입니다. </h2>
         <form action="/test/write1" method="post">
-            <table>
-                <tr>
-                    <input name ="title" type="text">
-                </tr>
-                <tr>
-                    <textarea name="content"></textarea>
-                </tr>
-                <tr>
-                    <input type="submit" value="글 작성하기">
-                </tr>
-            </table>
+            <div>
+                <label for="title">제목</label>
+                <input title="title" name ="title" type="text">
+            </div>
+
+            <div>
+                <label>내용</label>
+                <textarea class="content" name="content"
+                        rows="10" cols="50"></textarea>
+            </div>
+            <input type="submit" value="글 작성하기">
         </form>
     </div>
 </body>

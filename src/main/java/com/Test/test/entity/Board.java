@@ -15,7 +15,7 @@ public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String title;
-    private String content;
+    private Integer id;     // PK
+    private String title;   // 제목
+    private String content; // 내용
 }
