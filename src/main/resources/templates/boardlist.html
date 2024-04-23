@@ -34,12 +34,13 @@
     <!-- 페이징 처리를 위한 부분 - end -->
 
     <!-- 검색 부분 -->
-    <form action="/test/list">
-        <input type="search" name="search" class="search">
+    <form th:action="@{/test/list}" method="get">
+        <input type="text" name="searchKeyword">
         <input type="submit" value="검색">
     </form>
     <!-- 검색 부분 - end -->
 
+    <div align="center"></div>
     <form action="/test/write">
         <input type="submit" value="새글작성">
     </form>
