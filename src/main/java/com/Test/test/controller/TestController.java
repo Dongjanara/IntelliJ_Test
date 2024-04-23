@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 
@@ -41,8 +42,17 @@ public class TestController {
 
     @GetMapping("/test/list")
     public String boardList(Model model, @PageableDefault //초기값 설정하는 부분 <Set 로 외워서 써야함>
-            (page=0, size=10, sort="id", direction= Sort.Direction.DESC ) Pageable pageable){
-        Page<Board> boardList = boardService.boardList(pageable);
+            (page=0, size=10, sort="id", direction= Sort.Direction.DESC )
+                Pageable pageable, @RequestParam(name="searchKeyword", defaultValue = "")
+                    String searchKeyword){
+        Page<Board> boardList;
+
+        if(searchKeyword == null){
+            boardList = boardService.boardList(pageable);
+        } else {
+            boardList = boardService.SearchList(searchKeyword, pageable);
+        }
+
         int nowPage = boardList.getPageable().getPageNumber()+1; //처음 페이지 값이 초기치가 0이라서 +1을 해줘야함
         //.getPageNumber 를 붙여서 숫자로 변환이 됨. (없으면 "1" 이렇게 문자열이 넘어옴)
 

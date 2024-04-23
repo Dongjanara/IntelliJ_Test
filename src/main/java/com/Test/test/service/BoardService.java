@@ -20,8 +20,13 @@ public class BoardService {
     }
 
     //게시글 list 처리-전체 불러오기 ==> 페이징 처리를 위해서 List<Board> 형태로 받아오는걸 public Page<Board> 로 변경함
-    public Page<Board> boardList(Pageable pageable){
+    public Page<Board> boardList(Pageable pageable) {
         return boardRepository.findAll(pageable);
+    }
+
+    //게시판 검색기능
+    public Page<Board> SearchList(String searchKeyword, Pageable pageable) {
+        return boardRepository.findByTitleContaining(searchKeyword, pageable);
     }
 
     //게시글 눌렀을때, 내용까지 나오게
